@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 
 class Calculator extends Component {
+
+  state = {
+    incomes: [],
+    expenditures: []
+  }
+
+
+  componentDidMount() {
+    axios.get('dummyData.json')
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          incomes: response.data.incomes,
+          expenditures: response.data.expenditures
+        });
+        console.log(this.state.incomes);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+
   render() {
     return <div className="row">
       <div className="col-lg-6">
