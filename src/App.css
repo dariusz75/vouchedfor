@@ -1,0 +1,22 @@
+body {
+  padding-top: 20px;
+}
+
+
+h2 {
+  margin: 0 -10px;
+  text-align: center;
+  background-color: #317975;
+  color: #fff;
+}
+
+h5 {
+  color:  #317975;
+}
+
+.section {
+  padding: 0 10px;
+  background-color: antiquewhite;
+  border: solid 1px #317975;
+  border-radius: 5px;
+}
