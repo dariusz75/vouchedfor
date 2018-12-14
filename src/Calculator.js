@@ -4,17 +4,33 @@ import uniqid from 'uniqid';
 class Calculator extends Component {
 
   state = {
-    mortgageSliderValue: 0
+    mortgageSliderValue: 0,
+    billsSliderValue: 0,
+    generalSpendingSliderValue: 0,
+    savings: 2800,
   }
 
-  handleChange = (event) => {
+  mortgageSliderHandleChange = (event) => {
     event.preventDefault();
-    this.setState({ mortgageSliderValue: event.target.value });
+    this.setState({
+      mortgageSliderValue: event.target.value,
+      savings: this.state.savings - event.target.value
+    });
+  }
+
+  billsSliderHandleChange = (event) => {
+    event.preventDefault();
+    this.setState({ billsSliderValue: event.target.value });
+  }
+
+  generalSpendingSliderHandleChange = (event) => {
+    event.preventDefault();
+    this.setState({ generalSpendingSliderValue: event.target.value });
   }
 
   render() {
 
-    const { incomes_data, expenditures_data, mortgageSliderValue } = this.props;
+    const { incomes_data, expenditures_data, mortgageSliderValue, billsSliderValue, generalSpendingSliderValue, savings } = this.props;
 
     return <div className="row">
       <div className="col-lg-6">
@@ -41,7 +57,7 @@ class Calculator extends Component {
           )}
 
           <form>
-            <h5><strong>Monthly spending test</strong></h5>
+            <h5><strong>Monthly spending</strong></h5>
 
             {expenditures_data.map((item) =>
               <div className="row" key={uniqid()}>
@@ -71,23 +87,29 @@ class Calculator extends Component {
             <div className="form-group">
               <label htmlFor="mortgage-slider">Mortgage</label>
               <span className="float-right">{this.state.mortgageSliderValue}</span>
-              <input id="mortgage-slider" className="form-control-range" type="range" min="1" max="2800" step="1"
-
+              <input id="mortgage-slider" className="form-control-range" type="range" min="1" max="1199" step="1"
                 defaultValue={mortgageSliderValue}
-                onChange={this.handleChange} />
+                onChange={this.mortgageSliderHandleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="bills-slider">Bills</label>
-              <span className="float-right">max</span>
-              <input id="bills-slider" className="form-control-range" type="range" min="1" max="2800" step="1" />
+              <span className="float-right">{this.state.billsSliderValue}</span>
+              <input id="bills-slider" className="form-control-range" type="range" min="1" max="700" step="1"
+                defaultValue={billsSliderValue}
+                onChange={this.billsSliderHandleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="general-spending">General Spending</label>
-              <span className="float-right">max</span>
-              <input id="general-spending" className="form-control-range" type="range" min="1" max="2800" step="1" />
+              <span className="float-right">{this.state.generalSpendingSliderValue}</span>
+              <input id="general-spending" className="form-control-range" type="range" min="1" max="700" step="1"
+                defaultValue={generalSpendingSliderValue}
+                onChange={this.generalSpendingSliderHandleChange}
+              />
             </div>
           </form>
-          <h5 className="text-center"><strong>This means you are saving ??? per month</strong></h5>
+          <h5 className="text-center"><strong>This means you are saving {this.state.savings} per month</strong></h5>
         </div>
       </div>
     </div>;

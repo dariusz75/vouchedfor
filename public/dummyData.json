@@ -17,14 +17,14 @@
       "name": "Mortgage"
     },
     {
-      "amount": 1199,
+      "amount": 700,
       "from_age": 30,
       "to_age": 65,
       "frequency": "monthly",
       "name": "Bills"
     },
     {
-      "amount": 1199,
+      "amount": 700,
       "from_age": 30,
       "to_age": 65,
       "frequency": "monthly",
