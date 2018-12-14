@@ -1,96 +1,59 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import uniqid from 'uniqid';
 
 class Calculator extends Component {
 
-  state = {
-    incomes: [],
-    expenditures: []
-  }
-
-
-  componentDidMount() {
-    axios.get('dummyData.json')
-      .then((response) => {
-        console.log(response.data);
-        this.setState({
-          incomes: response.data.incomes,
-          expenditures: response.data.expenditures
-        });
-        console.log(this.state.incomes);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
-
-
   render() {
+
+    const { incomes_data, expenditures_data } = this.props;
+
     return <div className="row">
       <div className="col-lg-6">
         <div className="section">
           <h2>Your income and spend</h2>
           <h5><strong>Annual income</strong></h5>
+          {incomes_data.map((item) =>
+            <form key={uniqid()}>
+              <div className="row">
+                <div className="form-group col-4">
+                  <label htmlFor="formGroupExampleInput">{item.name}:</label>
+                  <input type="text" className="form-control" value={item.amount} readOnly />
+                </div>
+                <div className="form-group col-lg-4">
+                  <label htmlFor="formGroupExampleInput2">From age:</label>
+                  <input type="text" className="form-control" value={item.from_age} readOnly />
+                </div>
+                <div className="form-group col-lg-4">
+                  <label htmlFor="formGroupExampleInput2">To age:</label>
+                  <input type="text" className="form-control" value={item.to_age} readOnly />
+                </div>
+              </div>
+            </form>
+          )}
+
           <form>
-            <div className="row">
-              <div className="form-group col-4">
-                <label htmlFor="formGroupExampleInput">Anual salary:</label>
-                <input type="text" className="form-control" value="111" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">From age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">To age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-            </div>
-            <h5><strong>Monthly spending</strong></h5>
+            <h5><strong>Monthly spending test</strong></h5>
 
-
-            <div className="row">
-              <div className="form-group col-4">
-                <label htmlFor="formGroupExampleInput">Mortgage:</label>
-                <input type="text" className="form-control" value="111" readOnly />
+            {expenditures_data.map((item) =>
+              <div className="row" key={uniqid()}>
+                <div className="form-group col-4">
+                  <label htmlFor="formGroupExampleInput">{item.name}:</label>
+                  <input type="text" className="form-control" value={item.amount} readOnly />
+                </div>
+                <div className="form-group col-lg-4">
+                  <label htmlFor="formGroupExampleInput2">From age:</label>
+                  <input type="text" className="form-control" value={item.from_age} readOnly />
+                </div>
+                <div className="form-group col-lg-4">
+                  <label htmlFor="formGroupExampleInput2">To age:</label>
+                  <input type="text" className="form-control" value={item.to_age} readOnly />
+                </div>
               </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">From age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">To age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-4">
-                <label htmlFor="formGroupExampleInput">Bills:</label>
-                <input type="text" className="form-control" value="111" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">From age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">To age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-4">
-                <label htmlFor="formGroupExampleInput">General spending:</label>
-                <input type="text" className="form-control" value="111" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">From age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-              <div className="form-group col-lg-4">
-                <label htmlFor="formGroupExampleInput2">To age:</label>
-                <input type="text" className="form-control" readOnly />
-              </div>
-            </div>
+            )}
           </form>
-
         </div>
       </div>
+
       <div className="col-lg-6">
         <div className="section">
           <h2>Spend less</h2>
