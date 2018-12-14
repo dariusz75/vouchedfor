@@ -16,16 +16,16 @@ class Calculator extends Component {
             <form key={uniqid()}>
               <div className="row">
                 <div className="form-group col-4">
-                  <label htmlFor="formGroupExampleInput">{item.name}:</label>
-                  <input type="text" className="form-control" value={item.amount} readOnly />
+                  <label htmlFor="formGroupExampleInput1">{item.name}:</label>
+                  <input type="text" id="formGroupExampleInput1" className="form-control" value={item.amount} readOnly />
                 </div>
                 <div className="form-group col-lg-4">
                   <label htmlFor="formGroupExampleInput2">From age:</label>
-                  <input type="text" className="form-control" value={item.from_age} readOnly />
+                  <input type="text" id="formGroupExampleInput2" className="form-control" value={item.from_age} readOnly />
                 </div>
                 <div className="form-group col-lg-4">
-                  <label htmlFor="formGroupExampleInput2">To age:</label>
-                  <input type="text" className="form-control" value={item.to_age} readOnly />
+                  <label htmlFor="formGroupExampleInput3">To age:</label>
+                  <input type="text" id="formGroupExampleInput3" className="form-control" value={item.to_age} readOnly />
                 </div>
               </div>
             </form>
@@ -37,16 +37,16 @@ class Calculator extends Component {
             {expenditures_data.map((item) =>
               <div className="row" key={uniqid()}>
                 <div className="form-group col-4">
-                  <label htmlFor="formGroupExampleInput">{item.name}:</label>
-                  <input type="text" className="form-control" value={item.amount} readOnly />
+                  <label htmlFor="formGroupExampleInput4">{item.name}:</label>
+                  <input type="text" id="formGroupExampleInput4" className="form-control" value={item.amount} readOnly />
                 </div>
                 <div className="form-group col-lg-4">
-                  <label htmlFor="formGroupExampleInput2">From age:</label>
-                  <input type="text" className="form-control" value={item.from_age} readOnly />
+                  <label htmlFor="formGroupExampleInput5">From age:</label>
+                  <input type="text" id="formGroupExampleInput5" className="form-control" value={item.from_age} readOnly />
                 </div>
                 <div className="form-group col-lg-4">
-                  <label htmlFor="formGroupExampleInput2">To age:</label>
-                  <input type="text" className="form-control" value={item.to_age} readOnly />
+                  <label htmlFor="formGroupExampleInput6">To age:</label>
+                  <input type="text" id="formGroupExampleInput6" className="form-control" value={item.to_age} readOnly />
                 </div>
               </div>
             )}
@@ -61,21 +61,21 @@ class Calculator extends Component {
           <form>
             <div className="form-group">
               <label htmlFor="formControlRange">Mortgage</label>
-              <span className="float-right">1</span>
+              <span className="float-right">1199</span>
               <input type="range" className="form-control-range" id="formControlRange" />
             </div>
             <div className="form-group">
-              <label htmlFor="formControlRange">Bills</label>
-              <span className="float-right">1</span>
-              <input type="range" className="form-control-range" id="formControlRange" />
+              <label htmlFor="formControlRange2">Bills</label>
+              <span className="float-right">max</span>
+              <input type="range" className="form-control-range" id="formControlRange2" />
             </div>
             <div className="form-group">
-              <label htmlFor="formControlRange">General Spending</label>
-              <span className="float-right">1</span>
-              <input type="range" className="form-control-range" id="formControlRange" />
+              <label htmlFor="formControlRange3">General Spending</label>
+              <span className="float-right">max</span>
+              <input type="range" className="form-control-range" id="formControlRange3" />
             </div>
           </form>
-          <h5 className="text-center"><strong>This means you are saving 111 per month</strong></h5>
+          <h5 className="text-center"><strong>This means you are saving ??? per month</strong></h5>
         </div>
       </div>
     </div>;
