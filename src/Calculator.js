@@ -3,9 +3,18 @@ import uniqid from 'uniqid';
 
 class Calculator extends Component {
 
+  state = {
+    mortgageSliderValue: 0
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({ mortgageSliderValue: event.target.value });
+  }
+
   render() {
 
-    const { incomes_data, expenditures_data } = this.props;
+    const { incomes_data, expenditures_data, mortgageSliderValue } = this.props;
 
     return <div className="row">
       <div className="col-lg-6">
@@ -60,19 +69,22 @@ class Calculator extends Component {
           <h5 className="text-center">Try reducing your monthly spending to see how your forecast could improve!</h5>
           <form>
             <div className="form-group">
-              <label htmlFor="formControlRange">Mortgage</label>
-              <span className="float-right">1199</span>
-              <input type="range" className="form-control-range" id="formControlRange" />
+              <label htmlFor="mortgage-slider">Mortgage</label>
+              <span className="float-right">{this.state.mortgageSliderValue}</span>
+              <input id="mortgage-slider" className="form-control-range" type="range" min="1" max="2800" step="1"
+
+                defaultValue={mortgageSliderValue}
+                onChange={this.handleChange} />
             </div>
             <div className="form-group">
-              <label htmlFor="formControlRange2">Bills</label>
+              <label htmlFor="bills-slider">Bills</label>
               <span className="float-right">max</span>
-              <input type="range" className="form-control-range" id="formControlRange2" />
+              <input id="bills-slider" className="form-control-range" type="range" min="1" max="2800" step="1" />
             </div>
             <div className="form-group">
-              <label htmlFor="formControlRange3">General Spending</label>
+              <label htmlFor="general-spending">General Spending</label>
               <span className="float-right">max</span>
-              <input type="range" className="form-control-range" id="formControlRange3" />
+              <input id="general-spending" className="form-control-range" type="range" min="1" max="2800" step="1" />
             </div>
           </form>
           <h5 className="text-center"><strong>This means you are saving ??? per month</strong></h5>

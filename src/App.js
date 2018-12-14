@@ -9,6 +9,7 @@ class App extends Component {
   state = {
     incomes_data: [],
     expenditures_data: []
+
   }
 
 
